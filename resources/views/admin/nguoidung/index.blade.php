@@ -85,7 +85,7 @@
                                 Clear </a>
                             <a href="{{route('route_BackEnd_Uesr_Add')}}" class="btn btn-info btn-sm"><i class="fa fa-user-plus"
                                     style="color:white;"></i>
-                                Add new</a>
+Add new</a>
                         </div>
                     </div>
                 </div>
@@ -155,7 +155,7 @@
                             <th class="text-center">
                                 Email
                             </th>
-                            <th class="text-center">Quyền</th>
+<th class="text-center">Quyền</th>
                             <th class="text-center">Trạng thái</th>
                         </tr>
                         @foreach ($list as $l)
@@ -166,11 +166,15 @@
                                         style="white-space:unset;text-align: justify;"> {{$l ->name}} <i class="fa fa-edit"></i></a>
                                 </td>
                                 <td class="text-center">{{$l ->email}}</td>
-                                <td class="text-center">
-                                    nhân viên
+                                <td class="text-center">Đại ca
+                                    {{-- @if (($l->trang_thai) == 1)
+                                    Đại ca
+                                @else
+                                   Đệ
+                                   @endif --}}
                                 </td>
-                                <td class="text-center"><a class="btn btn-danger" href="">Xóa</a>
-                                    <a class="btn btn-primary" href="">Sửa</a></td>
+                                <td class="text-center"><a class="btn btn-danger" href="{{ route('route_BackEnd_Uesr_del',[$l->id]) }}">Xóa</a>
+                                    <a class="btn btn-primary" href="{{ route('route_BackEnd_Uesr_detail',[$l->id]) }}" >Sửa</a></td>
 
                             </tr>
                         @endforeach

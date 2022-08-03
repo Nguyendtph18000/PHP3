@@ -59,4 +59,10 @@ class test1 extends Model
       ->update($data_update);
       return $res;
     }
+
+    public function Xoa($id)
+    {
+       $res = DB::table($this->table)->where('id',$id)->update(['trang_thai'=>2]);
+       return $res;
+    }
 }

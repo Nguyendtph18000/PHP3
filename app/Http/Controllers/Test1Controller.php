@@ -70,6 +70,8 @@ class Test1Controller extends Controller
         $this->v['objitem'] = $objitem;
         return view('admin.nguoidung.detail', $this->v);
     }
+
+    
     public function update($id,Request $request){
         $method_route_detail = "route_BackEnd_Uesr_detail";
         $method_router_index = "route_BackEnd_Uesr_Index";
@@ -97,5 +99,24 @@ class Test1Controller extends Controller
             Session::flash('success','lỗi cập nhật bản ghi '.$id);
             return redirect()->route($method_route_detail,['id'=>$id]);
         }
+    }
+    public function destroy($id)
+    {
+        $method_router_index = "route_BackEnd_Uesr_Index";
+        $model = new test1();
+        $res = $model->Xoa($id);
+
+        if ($res == null) {
+            # code...
+            return  redirect()->route($method_router_index);
+        } elseif ($res > 0) {
+            Session::flash('success', 'Xóa người dùng '.$id.'thành công');
+
+            return   redirect()->route($method_router_index);
+        } else {
+            Session::flash('erro', 'Xóa lỗi');
+            redirect()->route($method_router_index);
+        }
+        return redirect()->route($method_router_index);
     }
 }
